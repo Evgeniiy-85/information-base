@@ -49,8 +49,8 @@ class Parser
         curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
 
-        curl_setopt($this->ch, CURLOPT_COOKIEJAR, $_SERVER['DOCUMENT_ROOT'] . '/cookie.txt');
-        curl_setopt($this->ch, CURLOPT_COOKIEFILE, $_SERVER['DOCUMENT_ROOT'] . '/cookie.txt');
+        curl_setopt($this->ch, CURLOPT_COOKIEJAR, $_SERVER['DOCUMENT_ROOT'] . '/files/cookie.txt');
+        curl_setopt($this->ch, CURLOPT_COOKIEFILE, $_SERVER['DOCUMENT_ROOT'] . '/files/cookie.txt');
 
 
         if ($params) {
@@ -91,7 +91,7 @@ class Parser
 
         if (strpos($info, 'ИИН:') !== false) {
             foreach (explode("<br>", $info) as $line) {
-                $item = trim(strip_tags($line));
+                $line = trim(strip_tags($line));
 
                 if (!empty($line)) {
                     list($key, $value) = explode(': ', $line);
